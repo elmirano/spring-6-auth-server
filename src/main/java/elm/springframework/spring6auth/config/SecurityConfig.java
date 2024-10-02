@@ -97,10 +97,13 @@ public class SecurityConfig {
                 .clientAuthenticationMethod(ClientAuthenticationMethod.CLIENT_SECRET_BASIC)
                 .authorizationGrantType(AuthorizationGrantType.AUTHORIZATION_CODE)
                 .authorizationGrantType(AuthorizationGrantType.REFRESH_TOKEN)
+                .authorizationGrantType(AuthorizationGrantType.CLIENT_CREDENTIALS)
                 .redirectUri("http://127.0.0.1:8080/login/oauth2/code/oidc-client")
                 .redirectUri("http://127.0.0.1:8080/authorized")
                 .scope(OidcScopes.OPENID)
                 .scope(OidcScopes.PROFILE)
+                .scope("message.read")
+                .scope("message.write")
                 .clientSettings(ClientSettings.builder().requireAuthorizationConsent(true).build())
                 .build();
 
@@ -143,3 +146,18 @@ public class SecurityConfig {
         return AuthorizationServerSettings.builder().build();
     }
 }
+
+
+//public static Builder builder() {
+//    return new Builder()
+//            .authorizationEndpoint("/oauth2/authorize")
+//            .deviceAuthorizationEndpoint("/oauth2/device_authorization")
+//            .deviceVerificationEndpoint("/oauth2/device_verification")
+//            .tokenEndpoint("/oauth2/token")
+//            .tokenIntrospectionEndpoint("/oauth2/introspect")
+//            .tokenRevocationEndpoint("/oauth2/revoke")
+//            .jwkSetEndpoint("/oauth2/jwks")
+//            .oidcLogoutEndpoint("/connect/logout")
+//            .oidcUserInfoEndpoint("/userinfo")
+//            .oidcClientRegistrationEndpoint("/connect/register");
+//}
